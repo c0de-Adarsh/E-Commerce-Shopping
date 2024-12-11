@@ -8,6 +8,7 @@ function ShoppingLayOut() {
         {/* header */}
         <ShoppingHeader/>
         <main className='flex flex-col w-full'>
+          hh
          <Outlet/>
         </main>
     </div>
