@@ -18,12 +18,14 @@ import CheckAuth from './components/Common/CheckAuth';
 import UnAuthPage from './pages/unAuthPage/UnAuthPage';
 import { useDispatch, useSelector } from 'react-redux';
 import { checkAuth } from './store/authslice/authSlice';
+import { Skeleton } from "@/components/ui/skeleton"
+
 
 function App() {
   // const isAuthenticated = false; // Replace with real auth logic
   // const user = null
    
-  const {user,isAuthenticated} = useSelector((state)=> state.auth)
+  const {user,isAuthenticated, isLoading} = useSelector((state)=> state.auth)
 
    const dispatch = useDispatch()
 
@@ -31,6 +33,9 @@ function App() {
         dispatch(checkAuth())
         console.log(checkAuth)
    },[dispatch])
+
+   if(isLoading) return <Skeleton className="w-[500px] h-[500px] " />
+
   return (
     <div className="flex flex-col overflow-hidden bg-white">
       <Routes>

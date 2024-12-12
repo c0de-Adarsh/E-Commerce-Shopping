@@ -45,10 +45,10 @@ export const loginUser = createAsyncThunk(
 
 export const checkAuth = createAsyncThunk(
   "/auth/checkauth",
-  async ( { rejectWithValue }) => {
+  async ( ) => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/auth/checkauth",
+        "http://localhost:5000/api/auth/check-auth",
         {
           withCredentials: true,
           headers:{
@@ -59,7 +59,7 @@ export const checkAuth = createAsyncThunk(
       );
       return response.data;
     } catch (error) {
-      return rejectWithValue(error.response.data);
+      console(error.response.data);
     }
   }
 );
